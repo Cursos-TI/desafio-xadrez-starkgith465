@@ -8,11 +8,51 @@ int main() {
     
      int torrelinha , torrecoluna;
      int bispolinha , bispocoluna;
-     int rainhalinha ,rainhacoluna,
-
+     int rainhalinha ,rainhacoluna;
+     int i , j;
+     
      // MOVIMENTO DA RAINHA
-        printf
-    
+         printf(" movimento da torre \n");
+        torrelinha = 4; //posicao de inicio da torre
+        torrecoluna =4; //posicao de inicio da torre
+        printf("posicao da torre \n");
+       //MOVIMENTOS VERTICAIS
+        for (i = 1;i <=8; i++){
+             if (i != torrelinha){
+             
+                printf("%d ,%d\n", i,torrecoluna);
+            }
+             
+        }
+        // MOVIMENTOS HORIZONTAIS
+        for (j = 1;j <= 8; i++){
+             if (j != torrecoluna){
+             
+             printf("%d, %d\n", torrelinha, j);
+             }
+             
+        }
+        // MOVIMENTOS DO BISPO 
+         while (i >= 1 && j >= 1){
+         
+            printf("%d,%d\n",i ,j);
+            i--;
+            j--;
+         }
+         i = bispolinha +1;
+         j= bispocoluna +1;
+
+          // DIAGONAL INFERIOR DIREITA 
+            do{
+              if (i <=8 && j <=8){
+                 printf("%d,%d\n", i,j);
+              }
+              i++;
+              j++;     
+            
+            } while (i <= 8 && j <=8);
+            
+
 
     // Implementação de Movimentação do Bispo
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
