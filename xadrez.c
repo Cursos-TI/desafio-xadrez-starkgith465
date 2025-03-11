@@ -5,8 +5,14 @@
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
 int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+    
+     int torrelinha , torrecoluna;
+     int bispolinha , bispocoluna;
+     int rainhalinha ,rainhacoluna,
+
+     // MOVIMENTO DA RAINHA
+        printf
+    
 
     // Implementação de Movimentação do Bispo
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
