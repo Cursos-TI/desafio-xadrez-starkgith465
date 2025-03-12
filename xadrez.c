@@ -50,10 +50,13 @@ int main() {
               i++;
               j++;     
             
-            } while (i <= 8 && j <=8);
-            
+            } while (i <= 8 && j <=8){
+               printf("%d,%d\n", i,j); j++; i++;
 
+            }
+              // DIAGONAL INFERIO ESQUERDA 
 
+              i
     // Implementação de Movimentação do Bispo
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
 
