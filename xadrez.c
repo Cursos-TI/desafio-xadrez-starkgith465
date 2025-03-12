@@ -51,12 +51,105 @@ int main() {
               j++;     
             
             } while (i <= 8 && j <=8){
-               printf("%d,%d\n", i,j); j++; i++;
+               printf("%d,%d\n", i,j); 
+            {
+               j++;
+               i++;
 
             }
               // DIAGONAL INFERIO ESQUERDA 
 
-              i
+              i = bispolinha +1;
+              j = bispocoluna -1;
+            
+              while (i <= 8 && j >=1) {
+               
+                printf("%d,%d\n",i,j);
+                i++;
+                j--;
+              }
+              
+             // MOVIMENTOS DA RAINHA 
+             rainhalinha = 5; // posicao incial da rainha
+             rainhacoluna = 5; // posicao incial da rainha
+             printf("movimentos da rainha \n");
+
+             //movimentos da rainha verticais
+
+               for (i  = 1; i <= 8; i++){
+                   if (i != rainhalinha){
+                   
+                     printf("%d,%d\n", i,rainhacoluna);
+                   }
+                   
+                  
+               }
+            // movimentos da rainha horizontaes 
+               for (j = 1; j <= 8; i++){
+                    if (j != rainhacoluna){
+                         printf("%d,%d\n", rainhalinha,j);
+                         printf(" a rainha se moveu para as horizontaes ");
+                    }
+                    
+                 
+               }
+                  
+         // movimentos diagonais da rainha IGUAL A DO BISBO
+            
+            i= rainhalinha -1;
+            j= rainhacoluna -1;
+
+
+            //diagonal superior esquerda 
+            while (i >= 1 && j >=1){
+                  printf("%d,%d\n",i,j);
+                  printf(" A RAINHA se moveu para a diagonal superior esquerda \n");
+                  j--;
+                  i--;
+            }
+            
+            i = rainhalinha +1;
+            j = rainhacoluna +1;
+
+
+            // diagonal inferior direita 
+
+            while (i <= 8 && j <= 8){      
+                  printf("%d,%d\n",i,j);
+                  printf("a RAINHA se moveu para a diagonal inferior direita \n");
+                  
+                  i++;
+                  j++;
+            }
+            
+         // diagonal superio a direita 
+
+          while (i>=1 && j <=8){
+                printf("%d,%d\n",i,j);
+                printf("a RAINHA se moveu para diagonal superior direita \n");
+                j--;
+                i--;
+          }
+          
+        i = rainhalinha + 1;
+        j = rainhacoluna -1;
+
+        // diagonal inferior esquerda 
+
+        while (i <=8 && j>=1){
+              printf("%d,%d\n",i,j);
+              printf(" A RAINHA se moveu para diagonal esquerda \n ");
+              i++;
+              j--;
+        }
+        
+
+
+
+
+
+
+
     // Implementação de Movimentação do Bispo
     // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
 
