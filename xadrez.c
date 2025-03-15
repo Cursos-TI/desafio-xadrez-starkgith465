@@ -2,66 +2,92 @@
 
 // Desafio de Xadrez - MateCheck
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
+// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação d
 
-    int main (){
-        int linha,coluna,opcao; // variaves para a posicao inicial
+#include <stdio.h>
 
-         // SOLICITA AO USUARIO A ESCOLHA DA PECA
-           printf9("informe a posicao inicial linha de 0 a 7");
-           scanf("%d %d" ,&linha,&coluna); // le a entrada do usuario para linha e coluna 
 
-         // SOLICITA AO USUARIO A ESCOLHA DA PECA 
-         printf("escolha a peca (1-torre,2-bispo,3-rainha)");
-         scanf("%d",&opcao); // le a entrada do usuario para as pecas escolhidas
-         
-         // verifica se a posicao inicial e fornecida e valida entre 0 e 7
-            if (linha < 0 || linha >= 8 || coluna < 0 || coluna >= 8){   
-                printf(" posicao invalida \n"); // mostra uma messagem de erro 
-                return 1; // encerra o programa com um codigo de erro 
+
+#include <stdio.h>
+
+int main() {
+    int escolha, casas, direcao;
+
+    while (1) {
+        // Menu principal
+        printf("Escolha a peça para mover:\n");
+        printf("1 - Torre\n");
+        printf("2 - Bispo\n");
+        printf("3 - Rainha\n");
+        printf("4 - Cavalo\n");
+        printf("0 - Sair\n");
+        printf("Digite sua escolha: ");
+        scanf("%d", &escolha);
+
+        if (escolha == 0) {
+            printf("Encerrando o programa...\n");
+            break;
+        }
+
+        if (escolha < 1 || escolha > 4) {
+            printf("Opção inválida! Tente novamente.\n\n");
+            continue;
+        }
+
+        printf("Digite o número de casas a serem movidas: ");
+        scanf("%d", &casas);
+
+        if (casas <= 0) {
+            printf("O número de casas deve ser maior que 0! Tente novamente.\n\n");
+            continue;
+        }
+
+        if (escolha != 4) {
+            printf("Escolha a direção:\n");
+            printf("1 - Cima\n");
+            printf("2 - Baixo\n");
+            printf("3 - Esquerda\n");
+            printf("4 - Direita\n");
+            printf("Digite sua escolha: ");
+            scanf("%d", &direcao);
+
+            if (direcao < 1 || direcao > 4) {
+                printf("Direção inválida! Tente novamente.\n\n");
+                continue;
             }
-            
-printf(" movimentos possives \n "); indica que os movimentos 
+        }
 
- // bloco de codigo para os movimentos da torre 
-  if(opcao ==1){
-     printf("movimentos da torre \n"); //
+        // Execução com base na escolha
+        switch (escolha) {
+            case 1:
+                printf("Movimento da Torre:\n");
+                for (int i = 0; i < casas; i++) {
+                    if (direcao == 1) printf("Cima\n");
+                    else if (direcao == 2) printf("Baixo\n");
+                    else if (direcao == 3) printf("Esquerda\n");
+                    else printf("Direita\n");
+                }
+                break;
 
-      //movimentos verticais mesma colun linha varia 
+            case 2:
+                printf("Movimento do Bispo:\n");
+                for (int i = 0; i < casas; i++) {
+                    printf("Diagonal\n");
+                }
+                break;
 
-      for (int i = 0; i < 8; i++){
-          if(i != linha)
-            printf("linha %d coluna %d \n", i , coluna);
-      }
-      
-// movimentos horizontaes mesma linha coluna varia 
- for (int j = 0; i < 8; j++){
-     if (j != coluna)
-       printf(" linha %d coluna %d\n", linha, j);
-    }
- 
-  // bloco de godigo do movimento do  bispo
-      for (int i = 1; i < 8; i++){
-          if (linha + 1<8 && coluna + < 8) // diagonal para baixo a direita
-           printf("linha %d coluna %d\n", linha + i , coluna + i);
+            case 3:
+                printf("Movimento da Rainha:\n");
+                for (int i = 0; i < casas; i++) printf("Cima\n");
+                for (int i = 0; i < casas; i++) printf("Diagonal\n");
+                break;
 
-           if(linha -i >= 0 && coluna - i >=0) // diagonal para cima esquerda
-            printf("linha %d coluna %d\n",linha-i,coluna-i);
 
-            if (linha + i < 8 && coluna - i >=0)// diagonal para baixo a esquerda
-              printf("linha %d, coluna %d \n", linha + i, coluna - i);
 
-            if(linha - i < 8 && coluna - i >= 0) //diagonal para cima a direita
-               printf("linha %d, coluna %d \n", linha -i, coluna + i);
+        return 0;
+} 
 
-      }
-      
- 
- {
-    /* code */
- }
- 
-
+  
 
 
     // Implementação de Movimentação do Bispo
@@ -84,5 +110,8 @@ printf(" movimentos possives \n "); indica que os movimentos
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
 
-    return 0;
+    
+
+}
+  return 0;
 }
