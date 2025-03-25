@@ -1,117 +1,120 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-// Desafio de Xadrez - MateCheck
-// Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
-// O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação d
+// Declaração de funções para cada peça
+void menu();
+void moverTorre(int casas, char direcao);
+void moverBispo(int x, int y, int casas);
+void moverRainha(int casas, char direcao);
+void moverCavalo(int limite);
 
-#include <stdio.h>
-
-
-
-#include <stdio.h>
-
+// Função principal
 int main() {
-    int escolha, casas, direcao;
+    menu();
+    return 0;
+}
 
-    while (1) {
-        // Menu principal
-        printf("Escolha a peça para mover:\n");
-        printf("1 - Torre\n");
-        printf("2 - Bispo\n");
-        printf("3 - Rainha\n");
-        printf("4 - Cavalo\n");
-        printf("0 - Sair\n");
+// Função para exibir o menu interativo
+void menu() {
+    int escolha, casas, limite;
+    char direcao;
+
+    while (1) { // Loop para permitir múltiplas interações do usuário
+        printf("\n=== Simulador de Movimentos de Xadrez ===\n");
+        printf("Escolha uma peça para simular o movimento:\n");
+        printf("1. Torre\n");
+        printf("2. Bispo\n");
+        printf("3. Rainha\n");
+        printf("4. Cavalo\n");
+        printf("5. Sair\n");
         printf("Digite sua escolha: ");
         scanf("%d", &escolha);
 
-        if (escolha == 0) {
-            printf("Encerrando o programa...\n");
-            break;
-        }
-
-        if (escolha < 1 || escolha > 4) {
-            printf("Opção inválida! Tente novamente.\n\n");
-            continue;
-        }
-
-        printf("Digite o número de casas a serem movidas: ");
-        scanf("%d", &casas);
-
-        if (casas <= 0) {
-            printf("O número de casas deve ser maior que 0! Tente novamente.\n\n");
-            continue;
-        }
-
-        if (escolha != 4) {
-            printf("Escolha a direção:\n");
-            printf("1 - Cima\n");
-            printf("2 - Baixo\n");
-            printf("3 - Esquerda\n");
-            printf("4 - Direita\n");
-            printf("Digite sua escolha: ");
-            scanf("%d", &direcao);
-
-            if (direcao < 1 || direcao > 4) {
-                printf("Direção inválida! Tente novamente.\n\n");
-                continue;
-            }
-        }
-
-        // Execução com base na escolha
         switch (escolha) {
             case 1:
-                printf("Movimento da Torre:\n");
-                for (int i = 0; i < casas; i++) {
-                    if (direcao == 1) printf("Cima\n");
-                    else if (direcao == 2) printf("Baixo\n");
-                    else if (direcao == 3) printf("Esquerda\n");
-                    else printf("Direita\n");
-                }
+                printf("\nDigite o número de casas para a Torre: ");
+                scanf("%d", &casas);
+                printf("Digite a direção (C = Cima, B = Baixo, E = Esquerda, D = Direita): ");
+                scanf(" %c", &direcao);
+                moverTorre(casas, direcao);
                 break;
-
             case 2:
-                printf("Movimento do Bispo:\n");
-                for (int i = 0; i < casas; i++) {
-                    printf("Diagonal\n");
-                }
+                printf("\nDigite o número de casas para o Bispo (diagonal): ");
+                scanf("%d", &casas);
+                moverBispo(0, 0, casas);
                 break;
-
             case 3:
-                printf("Movimento da Rainha:\n");
-                for (int i = 0; i < casas; i++) printf("Cima\n");
-                for (int i = 0; i < casas; i++) printf("Diagonal\n");
+                printf("\nDigite o número de casas para a Rainha: ");
+                scanf("%d", &casas);
+                printf("Digite a direção (C = Cima, B = Baixo, E = Esquerda, D = Direita, DI = Diagonal): ");
+                scanf(" %c", &direcao);
+                moverRainha(casas, direcao);
                 break;
-
-
-
-        return 0;
-} 
-
-  
-
-
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
-
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
-
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
-
-    
-
+            case 4:
+                printf("\nDigite o número de passos permitidos para o Cavalo: ");
+                scanf("%d", &limite);
+                moverCavalo(limite);
+                break;
+            case 5:
+                printf("\nSaindo do programa...\n");
+                exit(0);
+            default:
+                printf("\nEscolha inválida. Tente novamente.\n");
+        }
+    }
 }
-  return 0;
+
+// Função recursiva para movimentar a Torre
+void moverTorre(int casas, char direcao) {
+    if (casas == 0) return; // Caso base: nenhuma casa restante
+    printf("Torre movendo para: ");
+    if (direcao == 'C') {
+        printf("Cima\n");
+    } else if (direcao == 'B') {
+        printf("Baixo\n");
+    } else if (direcao == 'E') {
+        printf("Esquerda\n");
+    } else if (direcao == 'D') {
+        printf("Direita\n");
+    }
+    moverTorre(casas - 1, direcao); // Chamada recursiva para próxima casa
+}
+
+// Função recursiva para movimentar o Bispo
+void moverBispo(int x, int y, int casas) {
+    if (casas == 0) return; // Caso base: nenhuma casa restante
+    printf("Bispo movendo para: Diagonal (x=%d, y=%d)\n", x + 1, y + 1);
+    moverBispo(x + 1, y + 1, casas - 1); // Movimento diagonal recursivo
+}
+
+// Função para movimentar a Rainha (combinação de Torre e Bispo)
+void moverRainha(int casas, char direcao) {
+    if (casas == 0) return; // Caso base: nenhuma casa restante
+    printf("Rainha movendo para: ");
+    if (direcao == 'C') {
+        printf("Cima\n");
+    } else if (direcao == 'B') {
+        printf("Baixo\n");
+    } else if (direcao == 'E') {
+        printf("Esquerda\n");
+    } else if (direcao == 'D') {
+        printf("Direita\n");
+    } else if (direcao == 'I') { // Movimento diagonal
+        printf("Diagonal\n");
+    }
+    moverRainha(casas - 1, direcao); // Chamada recursiva para próxima casa
+}
+
+// Função para movimentar o Cavalo usando loops aninhados
+void moverCavalo(int limite) {
+    printf("Movimento do Cavalo:\n");
+    for (int i = 1; i <= limite; i++) { // Loop para simular passos
+        for (int j = 1; j <= limite; j++) { // Loop aninhado para cada posição
+            if ((i == 2 && j == 1) || (i == 1 && j == 2)) { // Movimento "L"
+                printf("Cavalo movendo para (x+%d, y+%d)\n", i, j);
+            }
+        }
+    }
+
+    return 0;
 }
